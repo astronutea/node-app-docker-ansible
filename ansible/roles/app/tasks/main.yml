@@ -1,0 +1,23 @@
+---
+- name: Install git
+  apt:
+    name: git
+    state: present
+
+- name: Clone repository
+  git:
+    repo: "{{ repo_url }}"
+    version: "{{ repo_branch }}"
+    dest: "{{ app_dir }}"
+    force: yes
+
+- name: Stop existing containers
+  shell: docker compose down
+  args:
+    chdir: "{{ app_dir }}"
+  ignore_errors: true
+
+- name: Start containers
+  shell: docker compose up -d --build
+  args:
+    chdir: "{{ app_dir }}"

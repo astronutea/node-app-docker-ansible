@@ -1,0 +1,5 @@
+repo_url: https://github.com/astronutea/node-app-docker-ansible.git
+repo_branch: master
+
+app_port: "3000"
+app_dir: "/opt/node-app"
