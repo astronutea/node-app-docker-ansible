@@ -5,7 +5,7 @@ services:
       - node-net
 
   app:
-    build: ./app
+    image: astronutx/node-app:latest
     ports:
       - "3000:3000"
     env_file:
